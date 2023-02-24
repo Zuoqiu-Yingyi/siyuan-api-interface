@@ -1,0 +1,21 @@
+{
+  "name": "siyuan-api",
+  "version": "0.0.0",
+  "description": "SiYuan Note API interface",
+  "author": "Zuoqiu Yingyi",
+  "license": "AGPL-3.0",
+  "bugs": "https://github.com/Zuoqiu-Yingyi/siyuan-api-interface/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zuoqiu-Yingyi/siyuan-api-interface.git",
+    "directory": "typescript/"
+  },
+  "keywords": [
+    "SiYuan",
+    "API"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
