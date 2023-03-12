@@ -1,28 +1,4 @@
-import {
-    ID,
-
-    Notebook,
-    INotebooks,
-
-    IResponse,
-
-    IResponse_version,
-    IResponse_lsNotebooks,
-
-    IPayload_fullTextSearchBlock,
-    IResponse_fullTextSearchBlock,
-
-    IPayload_getBlockBreadcrumb,
-    IResponse_getBlockBreadcrumb,
-
-    IPayload_searchDocs,
-    IResponse_searchDocs,
-
-    IPayload_listDocsByPath,
-    IResponse_listDocsByPath,
-
-    IResponse_getRecentDocs,
-} from "./../types/siyuan";
+import types from "./../types/siyuan";
 
 export class Client {
 
@@ -52,51 +28,51 @@ export class Client {
     }
 
     /* 获得内核版本 */
-    public async version(): Promise<IResponse_version> {
-        const response = await this._request("/api/system/version") as IResponse_version;
+    public async version(): Promise<types.IResponse_version> {
+        const response = await this._request("/api/system/version") as types.IResponse_version;
         return response;
     }
 
     /* 列出笔记本信息 */
-    public async lsNotebooks(): Promise<IResponse_lsNotebooks> {
-        const response = await this._request("/api/notebook/lsNotebooks") as IResponse_lsNotebooks;
+    public async lsNotebooks(): Promise<types.IResponse_lsNotebooks> {
+        const response = await this._request("/api/notebook/lsNotebooks") as types.IResponse_lsNotebooks;
         return response;
     }
 
     /* 查询最近打开的文档 */
-    public async getRecentDocs(): Promise<IResponse_getRecentDocs> {
-        const response = await this._request("/api/storage/getRecentDocs") as IResponse_getRecentDocs;
+    public async getRecentDocs(): Promise<types.IResponse_getRecentDocs> {
+        const response = await this._request("/api/storage/getRecentDocs") as types.IResponse_getRecentDocs;
         return response;
     }
 
     /* 全局搜索 */
-    public async fullTextSearchBlock(payload: IPayload_fullTextSearchBlock): Promise<IResponse_fullTextSearchBlock> {
-        const response = await this._request("/api/search/fullTextSearchBlock", payload) as IResponse_fullTextSearchBlock;
+    public async fullTextSearchBlock(payload: types.IPayload_fullTextSearchBlock): Promise<types.IResponse_fullTextSearchBlock> {
+        const response = await this._request("/api/search/fullTextSearchBlock", payload) as types.IResponse_fullTextSearchBlock;
         return response;
     }
 
     /* 获得指定块的面包屑 */
-    public async getBlockBreadcrumb(payload: IPayload_getBlockBreadcrumb): Promise<IResponse_getBlockBreadcrumb> {
-        const response = await this._request("/api/block/getBlockBreadcrumb", payload) as IResponse_getBlockBreadcrumb;
+    public async getBlockBreadcrumb(payload: types.IPayload_getBlockBreadcrumb): Promise<types.IResponse_getBlockBreadcrumb> {
+        const response = await this._request("/api/block/getBlockBreadcrumb", payload) as types.IResponse_getBlockBreadcrumb;
         return response;
     }
 
     /* 搜索文档 */
-    public async searchDocs(payload: IPayload_searchDocs): Promise<IResponse_searchDocs> {
-        const response = await this._request("/api/filetree/searchDocs", payload) as IResponse_searchDocs;
+    public async searchDocs(payload: types.IPayload_searchDocs): Promise<types.IResponse_searchDocs> {
+        const response = await this._request("/api/filetree/searchDocs", payload) as types.IResponse_searchDocs;
         return response;
     }
 
     /* 查询子文档 */
-    public async listDocsByPath(payload: IPayload_listDocsByPath): Promise<IResponse_listDocsByPath> {
-        const response = await this._request("/api/filetree/listDocsByPath", payload) as IResponse_listDocsByPath;
+    public async listDocsByPath(payload: types.IPayload_listDocsByPath): Promise<types.IResponse_listDocsByPath> {
+        const response = await this._request("/api/filetree/listDocsByPath", payload) as types.IResponse_listDocsByPath;
         return response;
     }
 
     protected async _request(
         pathname: string,
         payload: object = {},
-    ): Promise<IResponse> {
+    ): Promise<types.IResponse> {
         this.url.pathname = pathname;
         let response;
 
@@ -114,7 +90,7 @@ export class Client {
         }
 
         if (response.ok) {
-            const body: IResponse = await response.json();
+            const body: types.IResponse = await response.json();
 
             if (body.code === 0) {
                 return body;

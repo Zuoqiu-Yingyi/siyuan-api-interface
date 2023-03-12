@@ -7,6 +7,7 @@ export enum Leaf {
     t, // 表格块
     c, // 代码块
     html, // HTML 块
+    query_embed, // 嵌入块
 
     /* 不可搜索时过滤 */
     tb, // 分隔线
@@ -14,7 +15,6 @@ export enum Leaf {
     video, // 视频块
     iframe, // iframe
     widget, // 挂件块
-    query_embed, // 嵌入块
 }
 
 /* 容器块 */
